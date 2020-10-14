@@ -52,7 +52,7 @@ echo '[{"value":"abc"},{"value":"def"}]' | sed 's/},{/},\n{/g' | sed 's/\("value
 
 For more details read [sed Manual](https://www.gnu.org/software/sed/manual/sed.html)
 
-![Gnu mascot](https://www.gnu.org/graphics/official%20gnu.svg)
+![Gnu mascot](https://www.gnu.org/graphics/gnu-head-sm.jpg)
 
 
 
