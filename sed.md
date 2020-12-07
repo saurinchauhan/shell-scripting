@@ -8,26 +8,26 @@ sed command to copy string pattern and paste at desired location in line
 **Input:**
 
 ```
-[{"value":"abc"},{"value":"def"}]
+[{"value":"foo"},{"value":"bar"}]
 ```
 
 **Output:**
 
 ```
-[{"key":"abc","value":"abc"},
-{"key":"def","value":"def"}]
+[{"key":"foo","value":"foo"},
+{"key":"bar","value":"bar"}]
 ```
 
 **Command:**
 
 ```
-echo '[{"value":"abc"},{"value":"def"}]' | sed 's/},{/},\n{/g' | sed 's/\("value"\)\(:[^.]*"\)/"key"\2,\1\2/g'
+echo '[{"value":"foo"},{"value":"bar"}]' | sed 's/},{/},\n{/g' | sed 's/\("value"\)\(:[^.]*"\)/"key"\2,\1\2/g'
 ```
 
 
 **Explaination:**
 
-1. echo '[{"value":"abc"},{"value":"def"}]'
+1. echo '[{"value":"foo"},{"value":"bar"}]'
 
     * prints the given string
 
@@ -41,11 +41,11 @@ echo '[{"value":"abc"},{"value":"def"}]' | sed 's/},{/},\n{/g' | sed 's/\("value
     * To group a pattern in sed \( \) is used the pattern between \( \) will be considered as group
     * And the group can be repeated using \1 \2 \3 etc. in replace part of sed
 
-    * Here we are grouping "value" and whatever string is in between ':' to '"' (i.e: :"abc" , :"def" )
+    * Here we are grouping "value" and whatever string is in between ':' to '"' (i.e: :"foo" , :"bar" )
     * "value" will be \1 ; and string between ':' to '"' will be \2
     * Here, \("value"\)\(:[^.]*"\) is the 'find' part
     * "key"\2,\1\2 is the 'replace' part
-    * where "key" is static and then \2, => This will create an output like  << {"key":"abc", >> afterwards is \1\2 and that will give output like << "value":"abc" >>
+    * where "key" is static and then \2, => This will create an output like  << {"key":"foo", >> afterwards is \1\2 and that will give output like << "value":"foo" >>
 
     * g at the tail is used to repeat this opearations for entire string without this it will replace only first occurance.
 
